@@ -9,20 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/BoundsControlExamples.unity
     guid: 384e6c80fec551842a329aa6fdb67c00
   - enabled: 0
-    path: Assets/Scenes/BoundsControlRuntimeExample.unity
-    guid: 5c5bd8aafc6e8f24688a5be83e975c2e
-  - enabled: 0
-    path: Assets/Scenes/CanvasExample.unity
-    guid: 24da6686da5c91c40add71f019626f80
-  - enabled: 0
     path: Assets/Scenes/CanvasUITearsheet.unity
     guid: 826e2653482e5304ca8be3552e34f5c9
   - enabled: 0
     path: Assets/Scenes/ClippingExamples.unity
     guid: 8fba33ef2ac2d1241a18842f1f6ffcc2
   - enabled: 0
+    path: Assets/Scenes/CanvasExample.unity
+    guid: 24da6686da5c91c40add71f019626f80
+  - enabled: 0
     path: Assets/Scenes/ClippingInstancedExamples.unity
     guid: ddd904b1863ddfc44aab4e4767d47cfa
+  - enabled: 0
+    path: Assets/Scenes/BoundsControlRuntimeExample.unity
+    guid: 5c5bd8aafc6e8f24688a5be83e975c2e
   - enabled: 0
     path: Assets/Scenes/DiagnosticsDemo.unity
     guid: f33adb2534f521e4a9892edb30fae861
@@ -47,7 +47,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FontIconExample.unity
     guid: a3ce810af8da0ff438d98e8ebac2f69c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HandInteractionExamples.unity
     guid: 1300a9dceb058844b865199dcd557fc7
   - enabled: 0
@@ -62,7 +62,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LegacyConstraintsExample.unity
     guid: 88763918c04d8fe44893aa3eb5b89476
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MagicWindowExample.unity
     guid: 7741dcfc529d3a642859d9790b1a1c8d
   - enabled: 0
@@ -111,6 +111,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TextToSpeechExamples.unity
     guid: 3f1cdd1c1a4ad334db8edbcde93c0bdf
   - enabled: 0
+    path: Assets/Scenes/Experimental/NonNativeKeyboard.unity
+    guid: 4c87f445819343b4ba89b26fd8661dc4
+  - enabled: 0
     path: Assets/Scenes/ToggleCollectionExample.unity
     guid: 0acf7ee4108a007468a1a56ddb6a3630
   - enabled: 0
@@ -119,6 +122,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/VanillaUGUIExample.unity
     guid: de559429d95050746be9456af0fa1e6f
+  - enabled: 0
+    path: Assets/Scenes/Experimental/ScrollingExample.unity
+    guid: 77e21ebc978cbc84f9ebe061742ae42d
+  - enabled: 1
+    path: Assets/Scenes/Experimental/MyKeyboadExperimental.unity
+    guid: ab8b185dffdf9284c851f48e53b67522
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 87467803e919cef4394e7f39c6521b51, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: e61946fb8f8ff5e418d6ebb56cca2034, type: 2}
