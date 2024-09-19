@@ -8,6 +8,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using static MixedReality.Toolkit.UX.Experimental.NonNativeFunctionKey;
 
+using System.Collections.Generic;
+
 namespace MixedReality.Toolkit.UX.Experimental
 {
     /// <summary>
@@ -43,6 +45,7 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// </summary>
         public enum LayoutType
         {
+            Kana,
             /// <summary>
             /// Enables the alpha keys section and the alpha space section.
             /// </summary>
@@ -50,6 +53,10 @@ namespace MixedReality.Toolkit.UX.Experimental
             /// <summary>
             /// Enables the symbol keys section.
             /// </summary>
+            Common,
+
+
+
             Symbol,
             /// <summary>
             /// Enables the alpha keys section and the url space section.
@@ -199,6 +206,18 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// </summary>
         [field: SerializeField, Tooltip("The panel that contains the alpha keys.")]
         public GameObject AlphaKeysSection { get; set; }
+
+        /// <summary>
+        /// The panel that contains the alpha keys.
+        /// </summary>
+        [field: SerializeField, Tooltip("The panel that contains the kana keys.")]
+        public GameObject KanaKeysSection { get; set; }
+
+        /// <summary>
+        /// The panel that contains the alpha keys.
+        /// </summary>
+        [field: SerializeField, Tooltip("The panel that contains the kana keys.")]
+        public GameObject CommonKeysSection { get; set; }
 
         /// <summary>
         /// The panel that contains the number and symbol keys.
@@ -385,7 +404,8 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// </summary>
         public void Open()
         {
-            Open(LayoutType.Alpha);
+            Open(LayoutType.Common);
+            Open(LayoutType.Kana);
         }
 
 
@@ -436,6 +456,7 @@ namespace MixedReality.Toolkit.UX.Experimental
             ResetClosingTime();
             OnKeyPressed?.Invoke(valueKey);
             Text = Text.Insert(CaretIndex, valueKey.CurrentValue);
+
             CaretIndex += valueKey.CurrentValue.Length;
 
             if (!IsCapsLocked)
@@ -499,6 +520,14 @@ namespace MixedReality.Toolkit.UX.Experimental
                     ToggleDictation();
                     break;
 
+                case Function.KanaConvert:
+                    KanaConvert();
+                    break;
+
+                case Function.Change:
+                    ChangeKeyboard();
+                    break;
+
                 case Function.Undefined:
                 default:
                     Debug.LogErrorFormat("The {0} key on this keyboard hasn't been assigned a function.", functionKey.name);
@@ -518,6 +547,62 @@ namespace MixedReality.Toolkit.UX.Experimental
                 Text = Text.Remove(caretPosition, 1);
                 CaretIndex = caretPosition;
             }
+        }
+
+
+        private static readonly Dictionary<char, char> KanaMap = new Dictionary<char, char>
+        {
+            {'Ç†', 'Çü'}, {'Ç¢', 'Ç°'}, {'Ç§', 'Ç£'}, {'Ç¶', 'Ç•'}, {'Ç®', 'Çß'},
+            {'Ç©', 'Ç™'}, {'Ç´', 'Ç¨'}, {'Ç≠', 'ÇÆ'}, {'ÇØ', 'Ç∞'}, {'Ç±', 'Ç≤'},
+            {'Ç≥', 'Ç¥'}, {'Çµ', 'Ç∂'}, {'Ç∑', 'Ç∏'}, {'Çπ', 'Ç∫'}, {'Çª', 'Çº'},
+            {'ÇΩ', 'Çæ'}, {'Çø', 'Ç¿'}, {'Ç¬', 'Ç√'}, {'Çƒ', 'Ç≈'}, {'Ç∆', 'Ç«'},
+            {'Ç‚', 'Ç·'}, {'Ç‰', 'Ç„'}, {'ÇÊ', 'ÇÂ'},
+            {'Çü', 'Ç†'}, {'Ç°', 'Ç¢'}, {'Ç£', 'Ç§'}, {'Ç•', 'Ç¶'}, {'Çß', 'Ç®'},
+            {'Ç™', 'Ç©'}, {'Ç¨', 'Ç´'}, {'ÇÆ', 'Ç≠'}, {'Ç∞', 'ÇØ'}, {'Ç≤', 'Ç±'},
+            {'Ç¥', 'Ç≥'}, {'Ç∂', 'Çµ'}, {'Ç∏', 'Ç∑'}, {'Ç∫', 'Çπ'}, {'Çº', 'Çª'},
+            {'Çæ', 'ÇΩ'}, {'Ç¿', 'Çø'}, {'Ç√', 'Ç¬'}, {'Ç≈', 'Çƒ'}, {'Ç«', 'Ç∆'},
+            {'Ç·', 'Ç‚'}, {'Ç„', 'Ç‰'}, {'ÇÂ', 'ÇÊ'},
+            {'ÇÕ', 'ÇŒ'}, {'ÇŒ', 'Çœ'}, {'Çœ', 'ÇÕ'},
+            {'Ç–', 'Ç—'}, {'Ç—', 'Ç“'}, {'Ç“', 'Ç–'},
+            {'Ç”', 'Ç‘'}, {'Ç‘', 'Ç’'}, {'Ç’', 'Ç”'},
+            {'Ç÷', 'Ç◊'}, {'Ç◊', 'Çÿ'}, {'Çÿ', 'Ç÷'},
+            {'ÇŸ', 'Ç⁄'}, {'Ç⁄', 'Ç€'}, {'Ç€', 'ÇŸ'},
+        };
+
+        public void KanaConvert()
+        {
+            int caretPosition = CaretIndex;
+            if(caretPosition > 0)
+            {
+                char currentWord = Text[caretPosition - 1];
+                char resultWord = currentWord;
+
+                if (KanaMap.ContainsKey(currentWord))
+                {
+                    resultWord = KanaMap[currentWord];
+                }
+
+                caretPosition--;
+                Text = Text.Remove(caretPosition, 1);
+                Text = Text.Insert(caretPosition, resultWord.ToString());
+                caretPosition++;
+            }
+        }
+
+        /// <summary>
+        /// Change Keyboard Kana and Alpha.
+        /// </summary>
+        public void ChangeKeyboard()
+        {
+            if(lastKeyboardLayout == LayoutType.Kana)
+            {
+                Open(LayoutType.Alpha);
+            }
+            else
+            {
+                Open(LayoutType.Kana);
+            }
+            
         }
 
         /// <summary>
@@ -573,7 +658,9 @@ namespace MixedReality.Toolkit.UX.Experimental
         public void Space()
         {
             int caretPosition = CaretIndex;
-            Text = Text.Insert(caretPosition++, " ");
+
+            string space = lastKeyboardLayout == LayoutType.Kana ? "Å@" : " ";
+            Text = Text.Insert(caretPosition++, space);
             CaretIndex = caretPosition;
         }
 
@@ -735,7 +822,31 @@ namespace MixedReality.Toolkit.UX.Experimental
             {
                 SymbolKeysSection.gameObject.SetActive(true);
             }
-        } 
+        }
+
+        private void ShowKanaKeyboard()
+        {
+            if (KanaKeysSection != null)
+            {
+                KanaKeysSection.gameObject.SetActive(true);
+            }
+        }
+
+        private void ShowAlphaKeyboard()
+        {
+            if (AlphaKeysSection != null)
+            {
+                AlphaKeysSection.gameObject.SetActive(true);
+            }
+        }
+
+        private void ShowCommonKeyboard()
+        {
+            if (CommonKeysSection != null)
+            {
+                CommonKeysSection.gameObject.SetActive(true);
+            }
+        }
 
         /// <summary>
         /// Disable GameObjects for all keyboard elements.
@@ -745,6 +856,10 @@ namespace MixedReality.Toolkit.UX.Experimental
             if (AlphaKeysSection != null)
             {
                 AlphaKeysSection.SetActive(false);
+            }
+            if (KanaKeysSection != null)
+            {
+                KanaKeysSection.SetActive(false);
             }
             if (DefaultBottomKeysSection != null)
             {
@@ -811,12 +926,24 @@ namespace MixedReality.Toolkit.UX.Experimental
                     break;
                 }
 
+                case LayoutType.Common:
+                {
+                    ShowCommonKeyboard();
+                    break;
+                }
+
+                case LayoutType.Kana:
+                {
+                    lastKeyboardLayout = keyboardType;
+                    ShowKanaKeyboard();
+                    break;
+                }
+
                 case LayoutType.Alpha:
                 default:
                 {
                     lastKeyboardLayout = keyboardType;
-                    ShowAlphaKeyboardUpperSection();
-                    ShowAlphaKeyboardDefaultBottomKeysSection();
+                    ShowAlphaKeyboard();
                     break;
                 }
             }

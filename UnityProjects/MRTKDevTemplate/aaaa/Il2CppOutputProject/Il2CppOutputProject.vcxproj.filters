@@ -571,6 +571,9 @@
     <ClCompile Include="Source\il2cppOutput\GenericMethods__21.cpp">
       <Filter>Source\il2cppOutput</Filter>
     </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\GenericMethods__22.cpp">
+      <Filter>Source\il2cppOutput</Filter>
+    </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods__3.cpp">
       <Filter>Source\il2cppOutput</Filter>
     </ClCompile>

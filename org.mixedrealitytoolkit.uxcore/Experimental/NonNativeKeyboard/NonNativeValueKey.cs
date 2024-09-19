@@ -3,6 +3,7 @@
 
 using TMPro;
 using UnityEngine;
+using MixedReality.Toolkit.Input;
 
 namespace MixedReality.Toolkit.UX.Experimental
 {
@@ -18,8 +19,10 @@ namespace MixedReality.Toolkit.UX.Experimental
     /// value out of them early enough so to provide feedback. 
     /// </remarks>
     public class NonNativeValueKey : NonNativeKey
-    {
+    {   
         private string currentValue;
+
+        private AudioManager audioManager;
 
         /// <summary>
         /// The current string value of this value key. Note the value may change based on the shift status of the keyboard.
@@ -55,16 +58,25 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// <summary>
         /// The shifted string value for this key.
         /// </summary>
-        [SerializeField, Tooltip("The shifted string value for this key.")]
-        private string shiftedValue = null;
+        [SerializeField, Tooltip("The pulled string value for this key.")]
+        private string pulledValue = null;
 
         /// <summary>
         /// The shifted string value for this key.
         /// </summary>
-        public string ShiftedValue
+        public string PulledValue
         {
-            get => shiftedValue;
-            set => shiftedValue = value;
+            get => pulledValue;
+            set => pulledValue = value;
+        }
+
+        [SerializeField, Tooltip("The pushed string value for this key.")]
+        private string pushedValue = null;
+
+        public string PushedValue
+        {
+            get => pushedValue;
+            set => pushedValue = value;
         }
 
         /// <summary>
@@ -82,21 +94,21 @@ namespace MixedReality.Toolkit.UX.Experimental
                 textMeshProText = GetComponentInChildren<TMP_Text>();
             }
 
+            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+
             CurrentValue = defaultValue;
 
-            if (string.IsNullOrEmpty(shiftedValue))
+            if (string.IsNullOrEmpty(pulledValue))
             {
-                shiftedValue = defaultValue;
+                pulledValue = defaultValue;
+            }
+
+            if (string.IsNullOrEmpty(pushedValue))
+            {
+                pushedValue = defaultValue;
             }
         }
 
-        /// <summary>
-        /// A Unity event function that is called on the frame when a script is enabled just before any of the update methods are called the first time.
-        /// </summary> 
-        private void Start()
-        {
-            NonNativeKeyboard.Instance?.OnKeyboardShifted?.AddListener(Shift);
-        }
 
         /// <summary>
         /// A Unity Editor only event function that is called when the script is loaded or a value changes in the Unity Inspector.
@@ -116,20 +128,39 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// <inheritdoc/>
         protected override void FireKey()
         {
+            //NonNativeKeyboard.Instance.ProcessValueKeyPress(this);
+        }
+
+
+        public void FlickInput()
+        {
+            audioManager.PlayClickSound();
             NonNativeKeyboard.Instance.ProcessValueKeyPress(this);
         }
 
-        private void Shift(bool isShifted)
+
+        public void Shift(int posZ)
         {
-            // Shift value should only be applied if a shift value is present.
-            if (isShifted)
+            if (posZ == 1)
             {
-                CurrentValue = shiftedValue;
+                CurrentValue = pulledValue;
             }
-            else
+            else if(posZ == 0)
             {
                 CurrentValue = defaultValue;
             }
+            else
+            {
+                CurrentValue = pushedValue;
+            }
+        }
+
+        public void CapsLock()
+        {
+            string tmp = DefaultValue;
+            CurrentValue = pulledValue;
+            DefaultValue = pulledValue;
+            PulledValue = tmp;
         }
     }
 }

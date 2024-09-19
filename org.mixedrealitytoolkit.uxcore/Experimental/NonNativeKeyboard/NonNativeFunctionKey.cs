@@ -2,6 +2,7 @@
 // Licensed under the BSD 3-Clause
 
 using UnityEngine;
+using MixedReality.Toolkit.Input;
 
 namespace MixedReality.Toolkit.UX.Experimental
 {
@@ -18,6 +19,16 @@ namespace MixedReality.Toolkit.UX.Experimental
     /// </remarks>
     public class NonNativeFunctionKey : NonNativeKey
     {
+        [SerializeField]
+        private GameObject[] keys;
+
+        private AudioManager audioManager;
+
+        void Start()
+        {
+            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
+
         /// <summary>
         /// Possible functionalities for a function key.
         /// </summary>
@@ -75,6 +86,14 @@ namespace MixedReality.Toolkit.UX.Experimental
             /// Starts and ends dictation.
             /// </summary>
             Dictate = 12,
+
+
+
+            KanaConvert = 13,
+
+
+
+            Change = 14,
         }
 
         /// <summary>
@@ -86,7 +105,21 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// <inheritdoc/>
         protected override void FireKey()
         {
-            NonNativeKeyboard.Instance.ProcessFunctionKeyPress(this);
+
+            audioManager.PlayClickSound();
+            if (KeyFunction == Function.CapsLock)
+            {
+                foreach (GameObject key in keys) {
+                    for (int i = 0; i < key.transform.childCount; i++)
+                    {
+                        key.transform.GetChild(i).GetComponent<NonNativeValueKey>().CapsLock();
+                    }
+                }
+            }
+            else
+            {
+                NonNativeKeyboard.Instance.ProcessFunctionKeyPress(this);
+            }
         }
     }
 }

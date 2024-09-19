@@ -110,6 +110,8 @@
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods__21.cpp">
     </ClCompile>
+    <ClCompile Include="Source\il2cppOutput\GenericMethods__22.cpp">
+    </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods__3.cpp">
     </ClCompile>
     <ClCompile Include="Source\il2cppOutput\GenericMethods__4.cpp">

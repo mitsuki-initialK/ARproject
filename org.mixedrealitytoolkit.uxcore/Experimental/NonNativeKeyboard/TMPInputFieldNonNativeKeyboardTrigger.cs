@@ -38,12 +38,17 @@ namespace MixedReality.Toolkit.UX.Experimental
             }
         }
 
+        void Start()
+        {
+            PresentKeyboard();
+        }
+
         /// <summary>
         /// A Unity event function that is called when the script component has been enabled.
         /// </summary>
         private void OnEnable()
         {
-            field.onSelect.AddListener(OnInputFieldSelected);
+            //field.onSelect.AddListener(OnInputFieldSelected);
         }
 
         /// <summary>

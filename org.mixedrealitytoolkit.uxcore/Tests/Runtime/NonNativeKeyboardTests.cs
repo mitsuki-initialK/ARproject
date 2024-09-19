@@ -214,7 +214,7 @@ namespace MixedReality.Toolkit.UX.Runtime.Tests
 
             NonNativeValueKey valueKey = keyObj.AddComponent<NonNativeValueKey>();
             valueKey.DefaultValue = value;
-            valueKey.ShiftedValue = value.ToUpper();
+            valueKey.PulledValue = value.ToUpper();  ///////////////
 
 
             GameObject text = new GameObject("Text");

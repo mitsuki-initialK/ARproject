@@ -47,21 +47,21 @@ static Il2CppMethodPointer s_methodPointers[15] =
 };
 static const int32_t s_InvokerIndices[15] = 
 {
-	13665,
-	9091,
-	8925,
-	7176,
-	8925,
-	7176,
-	8925,
-	7176,
-	8925,
-	7176,
-	8925,
-	7176,
-	9091,
-	9091,
-	9091,
+	13689,
+	9114,
+	8948,
+	7194,
+	8948,
+	7194,
+	8948,
+	7194,
+	8948,
+	7194,
+	8948,
+	7194,
+	9114,
+	9114,
+	9114,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_MixedReality_Toolkit_Diagnostics_Visualization_CodeGenModule;
 const Il2CppCodeGenModule g_MixedReality_Toolkit_Diagnostics_Visualization_CodeGenModule = 

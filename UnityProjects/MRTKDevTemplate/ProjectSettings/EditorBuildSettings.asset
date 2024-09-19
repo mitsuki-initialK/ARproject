@@ -42,7 +42,7 @@ EditorBuildSettings:
     path: Assets/Scenes/DwellExample.unity
     guid: 214a3eff40efe654484f95e0bcb7d473
   - enabled: 0
-    path: Assets/Scenes/EyeGazeExample.unity
+    path: Assets/MyScenes/EyeGazeExample.unity
     guid: 34c7b3d86b487dd48818ba9904ee5c31
   - enabled: 0
     path: Assets/Scenes/FontIconExample.unity
@@ -126,7 +126,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Experimental/ScrollingExample.unity
     guid: 77e21ebc978cbc84f9ebe061742ae42d
   - enabled: 1
-    path: Assets/Scenes/Experimental/MyKeyboadExperimental.unity
+    path: Assets/MyScenes/MyKeyboadExperimental.unity
     guid: ab8b185dffdf9284c851f48e53b67522
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 87467803e919cef4394e7f39c6521b51, type: 2}

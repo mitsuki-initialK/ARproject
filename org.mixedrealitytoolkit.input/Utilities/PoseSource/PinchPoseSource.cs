@@ -23,7 +23,12 @@ namespace MixedReality.Toolkit.Input
                 && XRSubsystemHelpers.HandsAggregator != null
                 && XRSubsystemHelpers.HandsAggregator.TryGetPinchingPoint(handNode.Value, out HandJointPose pinchPose))
             {
-                pose.position = pinchPose.Position;
+                Vector3 cameraPosition = Camera.main.transform.position;
+                Quaternion cameraRotation = Camera.main.transform.rotation;
+
+                Vector3 localPosition = Camera.main.transform.InverseTransformPoint(pinchPose.Position);
+
+                pose.position = localPosition;
                 pose.rotation = pinchPose.Rotation;
                 return true;
             }
