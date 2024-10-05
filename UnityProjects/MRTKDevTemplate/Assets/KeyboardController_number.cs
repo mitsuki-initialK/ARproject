@@ -18,7 +18,7 @@ namespace MixedReality.Toolkit.Input
 
         private bool isPinching = false;
         private bool isGazing = false;
-        private float flickThreshold = 0.05f;
+        private float flickThreshold = 0.075f;
         private Coroutine pinchCoroutine;
 
 
