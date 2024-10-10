@@ -15,10 +15,11 @@ namespace MixedReality.Toolkit.Input
         private PinchPoseSource pinchPoseSource2;
         private Vector3 pinchStartPosition;
         private GameObject selectingKey = null;
+        private GameObject KeyboardCover = null;
 
         private bool isPinching = false;
         private bool isGazing = false;
-        private float flickThreshold = 0.075f;
+        private float flickThreshold = 0.05f;
         private Coroutine pinchCoroutine;
 
 
@@ -30,31 +31,44 @@ namespace MixedReality.Toolkit.Input
             pinchPoseSource2 = new PinchPoseSource();
             pinchPoseSource2.Hand = Handedness.Right;
 
+            Transform KeyboardCoverTransform = this.transform.parent.Find("keyboard_Cover");
+            if (KeyboardCoverTransform != null) { KeyboardCover = KeyboardCoverTransform.gameObject; }
+
             if (keys.Length > 9)
             {
-                float keyDistance = 75f;
+                float expantion = 1.3f;  //ägëÂÇ∑ÇÈÇ∆Ç´ÇÃî{ó¶
+                float keyDistance = 75f * expantion;Å@//ÉLÅ[ÇÃä‘äu
 
-                keys[1].transform.localPosition = new Vector3(- keyDistance, keyDistance, 0);
+                keys[1].transform.localPosition = new Vector3(-keyDistance, keyDistance, 0);
 
                 keys[2].transform.localPosition = new Vector3(0, keyDistance, 0);
 
                 keys[3].transform.localPosition = new Vector3(keyDistance, keyDistance, 0);
 
 
-                keys[4].transform.localPosition = new Vector3(- keyDistance, 0, 0);
+                keys[4].transform.localPosition = new Vector3(-keyDistance, 0, 0);
 
                 keys[6].transform.localPosition = new Vector3(keyDistance, 0, 0);
 
 
 
-                keys[7].transform.localPosition = new Vector3(- keyDistance, - keyDistance, 0);
+                keys[7].transform.localPosition = new Vector3(-keyDistance, -keyDistance, 0);
 
-                keys[8].transform.localPosition = new Vector3(0, - keyDistance, 0);
+                keys[8].transform.localPosition = new Vector3(0, -keyDistance, 0);
 
-                keys[9].transform.localPosition = new Vector3(keyDistance, - keyDistance, 0);
+                keys[9].transform.localPosition = new Vector3(keyDistance, -keyDistance, 0);
+
+                foreach (GameObject key in keys)
+                {
+                    if (key != null && key != keys[0])
+                    {
+                        key.transform.localScale = new Vector3(expantion, expantion, 1.0f);
+                    }
+
+
+                }
 
             }
-            
         }
 
 
@@ -82,6 +96,11 @@ namespace MixedReality.Toolkit.Input
         {
             ShowNumberkey();
             SelectKey(keys[5]);
+
+            if (KeyboardCover != null)
+            {
+                KeyboardCover.SetActive(true);
+            }
 
             pinchStartPosition = GetPinchPosition();
             isPinching = true;
@@ -186,6 +205,12 @@ namespace MixedReality.Toolkit.Input
             selectingKey.GetComponent<NonNativeValueKey>().FlickInput();
             SelectCancell();
 
+            if (KeyboardCover != null)
+            {
+                KeyboardCover.transform.SetAsLastSibling();
+                KeyboardCover.SetActive(false);
+            }
+
             if (isGazing)
             {
                 keys[0].GetComponent<Image>().color = Color.gray;
@@ -261,6 +286,5 @@ namespace MixedReality.Toolkit.Input
                 }
             }
         }
-
     }
 }

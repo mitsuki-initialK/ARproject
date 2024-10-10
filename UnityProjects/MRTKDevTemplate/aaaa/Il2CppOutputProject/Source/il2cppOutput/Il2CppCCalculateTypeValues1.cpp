@@ -6886,13 +6886,13 @@ struct U3CU3Ec__DisplayClass5_0_tB52C66FC10A05AD97DA2E1C6BDADA43E24A2015A  : pub
 	int32_t ___left;
 	int32_t ___right;
 };
-struct U3CPinchingU3Ed__14_tF8DCBB0AC92EDD22D31A9AE5190AB43F6F0E1182  : public RuntimeObject
+struct U3CPinchingU3Ed__15_t3CA153B08F3A79DF705D7CDA3EEF1563783C0B30  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
 	KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* ___U3CU3E4__this;
 };
-struct U3CPinchingU3Ed__13_tF78D675FA374C7AD70E5EC18769625BA60007B34  : public RuntimeObject
+struct U3CPinchingU3Ed__14_t9465EA2A4C1471F4D4209D77B1A1765FAC04FF58  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -29301,6 +29301,7 @@ struct KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6  : public Mo
 	PinchPoseSource_t4559B9C2D6096C9C86D0FA011AFDE8686FFAFED7* ___pinchPoseSource2;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___pinchStartPosition;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___selectingKey;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___KeyboardCover;
 	bool ___isPinching;
 	bool ___isGazing;
 	int32_t ___posZ;
@@ -29314,6 +29315,7 @@ struct KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1  : pu
 	PinchPoseSource_t4559B9C2D6096C9C86D0FA011AFDE8686FFAFED7* ___pinchPoseSource2;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___pinchStartPosition;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___selectingKey;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___KeyboardCover;
 	bool ___isPinching;
 	bool ___isGazing;
 	float ___flickThreshold;
@@ -43436,7 +43438,7 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize7885 = { sizeof(BatteryLevel
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7886;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7886 = { sizeof(AudioManager_tB4B98DAC383035850F8E7CD03B32046A54A4EB2B), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7887;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7887 = { sizeof(U3CPinchingU3Ed__13_tF78D675FA374C7AD70E5EC18769625BA60007B34), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7887 = { sizeof(U3CPinchingU3Ed__14_t9465EA2A4C1471F4D4209D77B1A1765FAC04FF58), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7888;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7888 = { sizeof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7889;
@@ -43638,7 +43640,7 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize7986 = { sizeof(UnitySourceG
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7987;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7987 = { sizeof(AudioManager_tDBBB253DBBA3F1DCF1E1A163EF9DAFCB6C910E0F), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7988;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize7988 = { sizeof(U3CPinchingU3Ed__14_tF8DCBB0AC92EDD22D31A9AE5190AB43F6F0E1182), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize7988 = { sizeof(U3CPinchingU3Ed__15_t3CA153B08F3A79DF705D7CDA3EEF1563783C0B30), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7989;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize7989 = { sizeof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize7990;

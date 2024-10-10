@@ -20,7 +20,7 @@ namespace MixedReality.Toolkit.Input
         private bool isPinching = false;
         private bool isGazing = false;
         private int posZ = 0;
-        private float flickThreshold = 0.075f;
+        private float flickThreshold = 0.05f;
         private Coroutine pinchCoroutine;
 
         private void Start()
@@ -34,7 +34,8 @@ namespace MixedReality.Toolkit.Input
             Transform KeyboardCoverTransform = this.transform.parent.Find("keyboard_Cover");
             if(KeyboardCoverTransform != null ) { KeyboardCover = KeyboardCoverTransform.gameObject; }
 
-            float keyDistance = 75f;
+            float expantion = 1.3f;  //ägëÂÇ∑ÇÈÇ∆Ç´ÇÃî{ó¶
+            float keyDistance = 75f * expantion;Å@//ÉLÅ[ÇÃä‘äu
 
             if (keys.Length == 1) return;
 
@@ -61,6 +62,14 @@ namespace MixedReality.Toolkit.Input
                 keys[5].transform.localPosition = new Vector3(0, - keyDistance, 0);
             }
             else { keys[5] = keys[1]; }
+
+            foreach (GameObject key in keys)
+            {
+                if (key != null && key != keys[0])
+                {
+                    key.transform.localScale = new Vector3(expantion, expantion, 1.0f);
+                }
+            }
         }
 
 

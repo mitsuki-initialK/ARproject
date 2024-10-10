@@ -3251,13 +3251,13 @@ struct U3CU3Ec__DisplayClass5_0_tB52C66FC10A05AD97DA2E1C6BDADA43E24A2015A  : pub
 	int32_t ___left;
 	int32_t ___right;
 };
-struct U3CPinchingU3Ed__14_tF8DCBB0AC92EDD22D31A9AE5190AB43F6F0E1182  : public RuntimeObject
+struct U3CPinchingU3Ed__15_t3CA153B08F3A79DF705D7CDA3EEF1563783C0B30  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
 	KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* ___U3CU3E4__this;
 };
-struct U3CPinchingU3Ed__13_tF78D675FA374C7AD70E5EC18769625BA60007B34  : public RuntimeObject
+struct U3CPinchingU3Ed__14_t9465EA2A4C1471F4D4209D77B1A1765FAC04FF58  : public RuntimeObject
 {
 	int32_t ___U3CU3E1__state;
 	RuntimeObject* ___U3CU3E2__current;
@@ -14643,6 +14643,7 @@ struct KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6  : public Mo
 	PinchPoseSource_t4559B9C2D6096C9C86D0FA011AFDE8686FFAFED7* ___pinchPoseSource2;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___pinchStartPosition;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___selectingKey;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___KeyboardCover;
 	bool ___isPinching;
 	bool ___isGazing;
 	int32_t ___posZ;
@@ -14656,6 +14657,7 @@ struct KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1  : pu
 	PinchPoseSource_t4559B9C2D6096C9C86D0FA011AFDE8686FFAFED7* ___pinchPoseSource2;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___pinchStartPosition;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___selectingKey;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___KeyboardCover;
 	bool ___isPinching;
 	bool ___isGazing;
 	float ___flickThreshold;
@@ -24808,10 +24810,10 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7886[2] =
 	static_cast<int32_t>(offsetof(AudioManager_tB4B98DAC383035850F8E7CD03B32046A54A4EB2B, ___audioSource)),static_cast<int32_t>(offsetof(AudioManager_tB4B98DAC383035850F8E7CD03B32046A54A4EB2B, ___clickSound)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7887[3] = 
 {
-	static_cast<int32_t>(offsetof(U3CPinchingU3Ed__13_tF78D675FA374C7AD70E5EC18769625BA60007B34, ___U3CU3E1__state)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__13_tF78D675FA374C7AD70E5EC18769625BA60007B34, ___U3CU3E2__current)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__13_tF78D675FA374C7AD70E5EC18769625BA60007B34, ___U3CU3E4__this)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7888[9] = 
+	static_cast<int32_t>(offsetof(U3CPinchingU3Ed__14_t9465EA2A4C1471F4D4209D77B1A1765FAC04FF58, ___U3CU3E1__state)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__14_t9465EA2A4C1471F4D4209D77B1A1765FAC04FF58, ___U3CU3E2__current)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__14_t9465EA2A4C1471F4D4209D77B1A1765FAC04FF58, ___U3CU3E4__this)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7888[10] = 
 {
-	static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___keys)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchPoseSource)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchPoseSource2)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchStartPosition)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___selectingKey)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___isPinching)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___isGazing)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___flickThreshold)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchCoroutine)),};
+	static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___keys)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchPoseSource)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchPoseSource2)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchStartPosition)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___selectingKey)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___KeyboardCover)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___isPinching)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___isGazing)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___flickThreshold)),static_cast<int32_t>(offsetof(KeyboardController_number_tE76E6C99E925BDC4AE9AEEFC6CD5966A3C3F4CC1, ___pinchCoroutine)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7891[2] = 
 {
 	static_cast<int32_t>(offsetof(U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA_StaticFields, ___0C96C2A0365EDCB1A39CDC6C59C1294D05E1A45B02E0AA931A79B3E243DDF122)),static_cast<int32_t>(offsetof(U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49FCA_StaticFields, ___30C993D4A2975278ABD731EC0ED968AA0F2318371C9F4925D27D79535F816965)),};
@@ -25063,10 +25065,10 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7987[2] =
 	static_cast<int32_t>(offsetof(AudioManager_tDBBB253DBBA3F1DCF1E1A163EF9DAFCB6C910E0F, ___audioSource)),static_cast<int32_t>(offsetof(AudioManager_tDBBB253DBBA3F1DCF1E1A163EF9DAFCB6C910E0F, ___clickSound)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7988[3] = 
 {
-	static_cast<int32_t>(offsetof(U3CPinchingU3Ed__14_tF8DCBB0AC92EDD22D31A9AE5190AB43F6F0E1182, ___U3CU3E1__state)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__14_tF8DCBB0AC92EDD22D31A9AE5190AB43F6F0E1182, ___U3CU3E2__current)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__14_tF8DCBB0AC92EDD22D31A9AE5190AB43F6F0E1182, ___U3CU3E4__this)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7989[10] = 
+	static_cast<int32_t>(offsetof(U3CPinchingU3Ed__15_t3CA153B08F3A79DF705D7CDA3EEF1563783C0B30, ___U3CU3E1__state)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__15_t3CA153B08F3A79DF705D7CDA3EEF1563783C0B30, ___U3CU3E2__current)),static_cast<int32_t>(offsetof(U3CPinchingU3Ed__15_t3CA153B08F3A79DF705D7CDA3EEF1563783C0B30, ___U3CU3E4__this)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7989[11] = 
 {
-	static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___keys)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchPoseSource)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchPoseSource2)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchStartPosition)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___selectingKey)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___isPinching)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___isGazing)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___posZ)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___flickThreshold)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchCoroutine)),};
+	static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___keys)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchPoseSource)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchPoseSource2)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchStartPosition)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___selectingKey)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___KeyboardCover)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___isPinching)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___isGazing)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___posZ)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___flickThreshold)),static_cast<int32_t>(offsetof(KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6, ___pinchCoroutine)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable7990[2] = 
 {
 	static_cast<int32_t>(offsetof(BasicPressableButtonVisuals_tA41CD75A6FC84B4B811FC043347374F66F0FA675, ___buttonState)),static_cast<int32_t>(offsetof(BasicPressableButtonVisuals_tA41CD75A6FC84B4B811FC043347374F66F0FA675, ___movingVisuals)),};
