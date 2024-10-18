@@ -20,7 +20,6 @@ namespace MixedReality.Toolkit.Input
         private bool isPinching = false;
         private bool isGazing = false;
         private int posZ = 0;
-        private float flickThreshold = 0.05f;
         private Coroutine pinchCoroutine;
 
         private void Start()
@@ -111,11 +110,11 @@ namespace MixedReality.Toolkit.Input
                 float absX = Mathf.Abs(flickDistance.x);
                 float absY = Mathf.Abs(flickDistance.y);
 
-                if (flickDistance.z < -0.15f)
+                if (flickDistance.z < -0.175f)
                 {
                     if(posZ != 1) Shifted(1);
                 }
-                else if (flickDistance.z <  0.15f)
+                else if (flickDistance.z <  0.075f)
                 {
                     if (posZ != 0) Shifted(0);
                 }
@@ -124,35 +123,33 @@ namespace MixedReality.Toolkit.Input
                     if (posZ != -1) Shifted(-1);
                 }
 
-                if (absX > flickThreshold || absY > flickThreshold)
+                if (absX > 0.050f)
                 {
-                    if ((absX - absY) > 0)
+                    if (flickDistance.x > 0)
                     {
-                        if (flickDistance.x > 0)
-                        {
-                            SelectKey(keys[4]);
-                        }
-                        else
-                        {
-                            SelectKey(keys[2]);
-                        }
+                        SelectKey(keys[4]);
                     }
                     else
                     {
-                        if (flickDistance.y > 0)
-                        {
-                            SelectKey(keys[3]);
-                        }
-                        else
-                        {
-                            SelectKey(keys[5]);
-                        }
+                        SelectKey(keys[2]);
+                    }
+                }
+                else if(absY > 0.050f)
+                {
+                    if (flickDistance.y > 0)
+                    {
+                        SelectKey(keys[3]);
+                    }
+                    else
+                    {
+                        SelectKey(keys[5]);
                     }
                 }
                 else
                 {
                     SelectKey(keys[1]);
                 }
+
 
                 yield return new WaitForSeconds(0.5f);
             }

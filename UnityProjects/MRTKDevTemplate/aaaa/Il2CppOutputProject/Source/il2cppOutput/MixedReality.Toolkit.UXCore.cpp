@@ -7838,7 +7838,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CPinchingU3Ed__15_MoveNext_m8494C7474E
 		int32_t L_3 = V_0;
 		if ((((int32_t)L_3) == ((int32_t)1)))
 		{
-			goto IL_013d;
+			goto IL_0132;
 		}
 	}
 	{
@@ -7848,7 +7848,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CPinchingU3Ed__15_MoveNext_m8494C7474E
 IL_001a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		goto IL_0144;
+		goto IL_0139;
 	}
 
 IL_0026:
@@ -7875,7 +7875,7 @@ IL_0026:
 		V_4 = L_14;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15 = V_2;
 		float L_16 = L_15.___z;
-		if ((!(((float)L_16) < ((float)(-0.150000006f)))))
+		if ((!(((float)L_16) < ((float)(-0.174999997f)))))
 		{
 			goto IL_0070;
 		}
@@ -7900,7 +7900,7 @@ IL_0070:
 	{
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20 = V_2;
 		float L_21 = L_20.___z;
-		if ((!(((float)L_21) < ((float)(0.150000006f)))))
+		if ((!(((float)L_21) < ((float)(0.075000003f)))))
 		{
 			goto IL_008e;
 		}
@@ -7943,136 +7943,126 @@ IL_009e:
 		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_29 = V_1;
 		NullCheck(L_29);
 		float L_30 = L_29->___flickThreshold;
-		if ((((float)L_28) > ((float)L_30)))
+		if ((!(((float)L_28) > ((float)L_30))))
 		{
-			goto IL_00b1;
+			goto IL_00d4;
 		}
 	}
 	{
-		float L_31 = V_4;
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_32 = V_1;
-		NullCheck(L_32);
-		float L_33 = L_32->___flickThreshold;
-		if ((!(((float)L_31) > ((float)L_33))))
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_31 = V_2;
+		float L_32 = L_31.___x;
+		if ((!(((float)L_32) > ((float)(0.0f)))))
 		{
-			goto IL_0116;
+			goto IL_00c4;
 		}
+	}
+	{
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_33 = V_1;
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_34 = V_1;
+		NullCheck(L_34);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_35 = L_34->___keys;
+		NullCheck(L_35);
+		int32_t L_36 = 4;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_37 = (L_35)->GetAt(static_cast<il2cpp_array_size_t>(L_36));
+		NullCheck(L_33);
+		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_33, L_37, NULL);
+		goto IL_0119;
 	}
 
-IL_00b1:
-	{
-		float L_34 = V_3;
-		float L_35 = V_4;
-		if ((!(((float)((float)il2cpp_codegen_subtract(L_34, L_35))) > ((float)(0.0f)))))
-		{
-			goto IL_00e9;
-		}
-	}
-	{
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_36 = V_2;
-		float L_37 = L_36.___x;
-		if ((!(((float)L_37) > ((float)(0.0f)))))
-		{
-			goto IL_00d9;
-		}
-	}
+IL_00c4:
 	{
 		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_38 = V_1;
 		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_39 = V_1;
 		NullCheck(L_39);
 		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_40 = L_39->___keys;
 		NullCheck(L_40);
-		int32_t L_41 = 4;
+		int32_t L_41 = 2;
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_42 = (L_40)->GetAt(static_cast<il2cpp_array_size_t>(L_41));
 		NullCheck(L_38);
 		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_38, L_42, NULL);
-		goto IL_0124;
+		goto IL_0119;
 	}
 
-IL_00d9:
+IL_00d4:
 	{
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_43 = V_1;
+		float L_43 = V_4;
 		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_44 = V_1;
 		NullCheck(L_44);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_45 = L_44->___keys;
-		NullCheck(L_45);
-		int32_t L_46 = 2;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_47 = (L_45)->GetAt(static_cast<il2cpp_array_size_t>(L_46));
-		NullCheck(L_43);
-		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_43, L_47, NULL);
-		goto IL_0124;
-	}
-
-IL_00e9:
-	{
-		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_48 = V_2;
-		float L_49 = L_48.___y;
-		if ((!(((float)L_49) > ((float)(0.0f)))))
+		float L_45 = L_44->___flickThreshold;
+		if ((!(((float)L_43) > ((float)L_45))))
 		{
-			goto IL_0106;
+			goto IL_010b;
 		}
 	}
 	{
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_50 = V_1;
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_51 = V_1;
-		NullCheck(L_51);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_52 = L_51->___keys;
-		NullCheck(L_52);
-		int32_t L_53 = 3;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_54 = (L_52)->GetAt(static_cast<il2cpp_array_size_t>(L_53));
+		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_46 = V_2;
+		float L_47 = L_46.___y;
+		if ((!(((float)L_47) > ((float)(0.0f)))))
+		{
+			goto IL_00fb;
+		}
+	}
+	{
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_48 = V_1;
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_49 = V_1;
+		NullCheck(L_49);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_50 = L_49->___keys;
 		NullCheck(L_50);
-		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_50, L_54, NULL);
-		goto IL_0124;
+		int32_t L_51 = 3;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_52 = (L_50)->GetAt(static_cast<il2cpp_array_size_t>(L_51));
+		NullCheck(L_48);
+		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_48, L_52, NULL);
+		goto IL_0119;
 	}
 
-IL_0106:
+IL_00fb:
 	{
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_55 = V_1;
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_56 = V_1;
-		NullCheck(L_56);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_57 = L_56->___keys;
-		NullCheck(L_57);
-		int32_t L_58 = 5;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_59 = (L_57)->GetAt(static_cast<il2cpp_array_size_t>(L_58));
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_53 = V_1;
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_54 = V_1;
+		NullCheck(L_54);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_55 = L_54->___keys;
 		NullCheck(L_55);
-		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_55, L_59, NULL);
-		goto IL_0124;
+		int32_t L_56 = 5;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_57 = (L_55)->GetAt(static_cast<il2cpp_array_size_t>(L_56));
+		NullCheck(L_53);
+		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_53, L_57, NULL);
+		goto IL_0119;
 	}
 
-IL_0116:
+IL_010b:
 	{
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_60 = V_1;
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_61 = V_1;
-		NullCheck(L_61);
-		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_62 = L_61->___keys;
-		NullCheck(L_62);
-		int32_t L_63 = 1;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_64 = (L_62)->GetAt(static_cast<il2cpp_array_size_t>(L_63));
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_58 = V_1;
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_59 = V_1;
+		NullCheck(L_59);
+		GameObjectU5BU5D_tFF67550DFCE87096D7A3734EA15B75896B2722CF* L_60 = L_59->___keys;
 		NullCheck(L_60);
-		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_60, L_64, NULL);
+		int32_t L_61 = 1;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_62 = (L_60)->GetAt(static_cast<il2cpp_array_size_t>(L_61));
+		NullCheck(L_58);
+		KeyboardController_SelectKey_m1CC09EA30B3F351609E72BD1CD642A4A67DEA95D(L_58, L_62, NULL);
 	}
 
-IL_0124:
+IL_0119:
 	{
-		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_65 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
-		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_65, (0.5f), NULL);
-		__this->___U3CU3E2__current = L_65;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)L_65);
+		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_63 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
+		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_63, (0.5f), NULL);
+		__this->___U3CU3E2__current = L_63;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)L_63);
 		__this->___U3CU3E1__state = 1;
 		return (bool)1;
 	}
 
-IL_013d:
+IL_0132:
 	{
 		__this->___U3CU3E1__state = (-1);
 	}
 
-IL_0144:
+IL_0139:
 	{
-		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_66 = V_1;
-		NullCheck(L_66);
-		bool L_67 = L_66->___isPinching;
-		if (L_67)
+		KeyboardController_t19D6456B7826B8CD4614623D207BAA58D7A23EF6* L_64 = V_1;
+		NullCheck(L_64);
+		bool L_65 = L_64->___isPinching;
+		if (L_65)
 		{
 			goto IL_0026;
 		}
