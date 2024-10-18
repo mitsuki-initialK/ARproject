@@ -25,11 +25,11 @@ namespace MixedReality.Toolkit.Input
 
         private void Start()
         {
-            pinchPoseSource = new PinchPoseSource();
-            pinchPoseSource.Hand = Handedness.Left;
+            //pinchPoseSource2 = new PinchPoseSource();
+            //pinchPoseSource2.Hand = Handedness.Left;
 
-            pinchPoseSource2 = new PinchPoseSource();
-            pinchPoseSource2.Hand = Handedness.Right;
+            pinchPoseSource = new PinchPoseSource();
+            pinchPoseSource.Hand = Handedness.Right;
 
             Transform KeyboardCoverTransform = this.transform.parent.Find("keyboard_Cover");
             if (KeyboardCoverTransform != null) { KeyboardCover = KeyboardCoverTransform.gameObject; }
@@ -249,6 +249,7 @@ namespace MixedReality.Toolkit.Input
             }
             else
             {
+                /**
                 if (pinchPoseSource2.TryGetPose(out Pose pinchPose2))
                 {
                     pinchPosition = pinchPose2.position;
@@ -257,6 +258,7 @@ namespace MixedReality.Toolkit.Input
                 {
                     Debug.Log("Pinch pose not detected.");
                 }
+                **/
             }
 
             return pinchPosition;
