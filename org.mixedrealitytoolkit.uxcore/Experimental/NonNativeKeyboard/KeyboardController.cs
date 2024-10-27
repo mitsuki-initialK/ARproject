@@ -110,44 +110,44 @@ namespace MixedReality.Toolkit.Input
                 float absX = Mathf.Abs(flickDistance.x);
                 float absY = Mathf.Abs(flickDistance.y);
 
-                if (flickDistance.z < -0.175f)
+                if (flickDistance.z < -0.150f)
                 {
-                    if(posZ != 1) Shifted(1);
+                    if(posZ != 1) Shifted(1);       //手前に引っ張る
                 }
-                else if (flickDistance.z <  0.075f)
+                else if (flickDistance.z <  0.050f)
                 {
-                    if (posZ != 0) Shifted(0);
+                    if (posZ != 0) Shifted(0);  
                 }
                 else
                 {
-                    if (posZ != -1) Shifted(-1);
+                    if (posZ != -1) Shifted(-1);    //奥に押す
                 }
 
                 if (absX > 0.050f)
                 {
                     if (flickDistance.x > 0)
                     {
-                        SelectKey(keys[4]);
+                        SelectKey(keys[4]);   //右のキー
                     }
                     else
                     {
-                        SelectKey(keys[2]);
+                        SelectKey(keys[2]);    //左のキー
                     }
                 }
                 else if(absY > 0.050f)
                 {
                     if (flickDistance.y > 0)
                     {
-                        SelectKey(keys[3]);
+                        SelectKey(keys[3]);   //上のキー
                     }
                     else
                     {
-                        SelectKey(keys[5]);
+                        SelectKey(keys[5]);   //下のキー
                     }
                 }
                 else
                 {
-                    SelectKey(keys[1]);
+                    SelectKey(keys[1]);   //真ん中のキー
                 }
 
 

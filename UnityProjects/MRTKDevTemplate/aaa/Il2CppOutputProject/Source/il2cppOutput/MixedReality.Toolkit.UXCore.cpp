@@ -7830,7 +7830,7 @@ IL_0026:
 		V_4 = L_14;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_15 = V_2;
 		float L_16 = L_15.___z;
-		if ((!(((float)L_16) < ((float)(-0.174999997f)))))
+		if ((!(((float)L_16) < ((float)(-0.150000006f)))))
 		{
 			goto IL_0070;
 		}
@@ -7855,7 +7855,7 @@ IL_0070:
 	{
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_20 = V_2;
 		float L_21 = L_20.___z;
-		if ((!(((float)L_21) < ((float)(0.075000003f)))))
+		if ((!(((float)L_21) < ((float)(0.0500000007f)))))
 		{
 			goto IL_008e;
 		}
