@@ -24,6 +24,9 @@ namespace MixedReality.Toolkit.UX.Experimental
 
         private AudioManager audioManager;
 
+        private KeyInputCountSystem keyInputCountSystem;
+
+
         /// <summary>
         /// The current string value of this value key. Note the value may change based on the shift status of the keyboard.
         /// </summary>
@@ -95,6 +98,7 @@ namespace MixedReality.Toolkit.UX.Experimental
             }
 
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+            keyInputCountSystem = GameObject.Find("KeyInputCountSystem").GetComponent<KeyInputCountSystem>();
 
             CurrentValue = defaultValue;
 
@@ -134,6 +138,15 @@ namespace MixedReality.Toolkit.UX.Experimental
 
         public void FlickInput()
         {
+            if (keyInputCountSystem.counting)
+            {
+                if (keyInputCountSystem.Check(this.currentValue) == false)
+                {
+                    audioManager.PlayIncorrectSound();
+                    return;
+                }
+            }
+
             audioManager.PlayClickSound();
             NonNativeKeyboard.Instance.ProcessValueKeyPress(this);
         }

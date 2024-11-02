@@ -528,6 +528,10 @@ namespace MixedReality.Toolkit.UX.Experimental
                     ChangeKeyboard();
                     break;
 
+                case Function.DeleteAll:
+                    DeleteAll();
+                    break;
+
                 case Function.Undefined:
                 default:
                     Debug.LogErrorFormat("The {0} key on this keyboard hasn't been assigned a function.", functionKey.name);
@@ -547,6 +551,13 @@ namespace MixedReality.Toolkit.UX.Experimental
                 Text = Text.Remove(caretPosition, 1);
                 CaretIndex = caretPosition;
             }
+        }
+
+        public void DeleteAll()
+        {
+            int caretPosition = 0;
+            CaretIndex = caretPosition;
+            Text = "";
         }
 
 

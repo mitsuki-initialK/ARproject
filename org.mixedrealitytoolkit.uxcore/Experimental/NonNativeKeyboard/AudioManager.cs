@@ -7,8 +7,11 @@ namespace MixedReality.Toolkit.Input
     public class AudioManager : MonoBehaviour
     {
         private AudioSource audioSource;
+
         [SerializeField]
         private AudioClip clickSound;
+        [SerializeField]
+        private AudioClip IncorrectSound;
 
         // Start is called before the first frame update
         void Start()
@@ -19,6 +22,11 @@ namespace MixedReality.Toolkit.Input
         public void PlayClickSound()
         {
             audioSource.PlayOneShot(clickSound);
+        }
+
+        public void PlayIncorrectSound()
+        {
+            audioSource.PlayOneShot(IncorrectSound);
         }
     }
 }

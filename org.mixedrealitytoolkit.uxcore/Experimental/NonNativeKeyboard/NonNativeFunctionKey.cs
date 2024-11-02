@@ -88,12 +88,13 @@ namespace MixedReality.Toolkit.UX.Experimental
             Dictate = 12,
 
 
-
-            KanaConvert = 13,
-
+            DeleteAll = 13,
 
 
-            Change = 14,
+            KanaConvert = 14,
+
+
+            Change = 15,
         }
 
         /// <summary>
@@ -107,6 +108,8 @@ namespace MixedReality.Toolkit.UX.Experimental
         {
 
             audioManager.PlayClickSound();
+
+
             if (KeyFunction == Function.CapsLock)
             {
                 foreach (GameObject key in keys) {

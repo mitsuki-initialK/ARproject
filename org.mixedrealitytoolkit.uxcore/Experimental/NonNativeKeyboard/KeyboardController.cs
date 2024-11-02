@@ -24,9 +24,6 @@ namespace MixedReality.Toolkit.Input
 
         private void Start()
         {
-            //pinchPoseSource2 = new PinchPoseSource();
-            //pinchPoseSource2.Hand = Handedness.Left;
-
             pinchPoseSource = new PinchPoseSource();
             pinchPoseSource.Hand = Handedness.Right;
 
@@ -110,19 +107,6 @@ namespace MixedReality.Toolkit.Input
                 float absX = Mathf.Abs(flickDistance.x);
                 float absY = Mathf.Abs(flickDistance.y);
 
-                if (flickDistance.z < -0.150f)
-                {
-                    if(posZ != 1) Shifted(1);       //手前に引っ張る
-                }
-                else if (flickDistance.z <  0.050f)
-                {
-                    if (posZ != 0) Shifted(0);  
-                }
-                else
-                {
-                    if (posZ != -1) Shifted(-1);    //奥に押す
-                }
-
                 if (absX > 0.050f)
                 {
                     if (flickDistance.x > 0)
@@ -148,6 +132,38 @@ namespace MixedReality.Toolkit.Input
                 else
                 {
                     SelectKey(keys[1]);   //真ん中のキー
+                }
+
+
+                if (selectingKey == keys[2])
+                {
+                    if (flickDistance.z < -0.125f)
+                    {
+                        if (posZ != 1) Shifted(1);       //手前に引っ張る
+                    }
+                    else if (flickDistance.z < 0.025f)
+                    {
+                        if (posZ != 0) Shifted(0);
+                    }
+                    else
+                    {
+                        if (posZ != -1) Shifted(-1);    //奥に押す
+                    }
+                }
+                else
+                {
+                    if (flickDistance.z < -0.100f)
+                    {
+                        if (posZ != 1) Shifted(1);       //手前に引っ張る
+                    }
+                    else if (flickDistance.z < 0.050f)
+                    {
+                        if (posZ != 0) Shifted(0);
+                    }
+                    else
+                    {
+                        if (posZ != -1) Shifted(-1);    //奥に押す
+                    }
                 }
 
 
@@ -215,16 +231,7 @@ namespace MixedReality.Toolkit.Input
             }
             else
             {
-                /**
-                if (pinchPoseSource2.TryGetPose(out Pose pinchPose2))
-                {
-                    pinchPosition = pinchPose2.position;
-                }
-                else
-                {
-                    Debug.Log("Pinch pose not detected.");
-                }
-                **/
+                Debug.Log("Pinch pose not detected.");
             }
 
             return pinchPosition;
