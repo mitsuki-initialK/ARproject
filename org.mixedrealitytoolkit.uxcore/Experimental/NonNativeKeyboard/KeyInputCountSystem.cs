@@ -17,8 +17,13 @@ namespace MixedReality.Toolkit.UX
         private GameObject button;
         [SerializeField]
         private GameObject InputField;
+        [SerializeField]
+        private GameObject UI;
 
         private Stopwatch stopwatch;
+
+        private GameObject resultUI;
+        private GameObject countDownUI;
 
         public bool counting = false;
         private int missCount = 0; //何回ミスしたか
@@ -30,13 +35,20 @@ namespace MixedReality.Toolkit.UX
             "いろはにほへとちりぬるを",
             "わたるせけんにおにはない",
             "はやおきはさんもんのとく",
+            "ぼくのぱぱはまんがかです",
+            "いっきょしゅいっとうそく",
         };
 
 
         void Start()
         {
+
             InputField.GetComponent<TextMeshProUGUI>().text = sentences[sentNum];
+
             stopwatch = new Stopwatch();
+
+            countDownUI = UI.transform.Find("CountDownUI").gameObject;
+            resultUI = UI.transform.Find("ResultUI").gameObject;
         }
 
 
@@ -67,6 +79,8 @@ namespace MixedReality.Toolkit.UX
 
         public void SelectSentence()
         {
+            resultUI.SetActive(false);
+
             sentNum++;
             if(sentNum >= sentences.Length) sentNum = 0;
 
@@ -77,7 +91,7 @@ namespace MixedReality.Toolkit.UX
         {
             if (!counting)
             {
-                CountStart();
+                StartCoroutine(ShowUIRoutine());
             }
             else
             {
@@ -98,6 +112,7 @@ namespace MixedReality.Toolkit.UX
                 if (charNum == sentences[sentNum].Length)
                 {
                     CountStop();
+                    ShowResultUI();
                 }
             }
             else
@@ -109,10 +124,25 @@ namespace MixedReality.Toolkit.UX
         }
 
 
+        IEnumerator ShowUIRoutine()
+        {
+            countDownUI.transform.Find("Panel/Text").GetComponent<TextMeshProUGUI>().text = "「" + sentences[sentNum] + "」";
+
+            countDownUI.SetActive(true);
+
+            yield return new WaitForSeconds(3f);
+
+            countDownUI.SetActive(false);
+
+            CountStart();
+
+        }
+
         private void CountStart()
         {
             charNum = 0;
             missCount = 0;
+            stopwatch.Reset();
             stopwatch.Start();
             button.GetComponent<Image>().color = new Color(1f, 0.50f, 0f);  //usui red
             startIcon.SetActive(false);
@@ -127,6 +157,15 @@ namespace MixedReality.Toolkit.UX
             startIcon.SetActive(true);
             stopIcon.SetActive(false);
             counting = false;
+        }
+
+        private void ShowResultUI()
+        {
+
+            resultUI.transform.Find("Panel/Text").GetComponent<TextMeshProUGUI>().text
+                = "秒数：" + stopwatch.Elapsed.TotalSeconds.ToString("0.00") + "　　ミス数：" + missCount;
+
+            resultUI.SetActive(true);
         }
 
     }

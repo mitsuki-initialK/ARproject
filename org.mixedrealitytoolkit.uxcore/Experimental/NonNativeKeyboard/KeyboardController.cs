@@ -231,7 +231,7 @@ namespace MixedReality.Toolkit.Input
             }
             else
             {
-                Debug.Log("Pinch pose not detected.");
+                //Debug.Log("Pinch pose not detected.");
             }
 
             return pinchPosition;
