@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DiagnosticsDemo.unity
     guid: f33adb2534f521e4a9892edb30fae861
+  - enabled: 1
+    path: Assets/NonNativeKeyboard.unity
+    guid: 1b1686de25e254c45ab161fb1544a737
   - enabled: 0
     path: Assets/Scenes/DialogExample.unity
     guid: 9a9b5ebb20dad464f82939c1919f3c29
@@ -111,9 +114,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TextToSpeechExamples.unity
     guid: 3f1cdd1c1a4ad334db8edbcde93c0bdf
   - enabled: 0
-    path: Assets/Scenes/Experimental/NonNativeKeyboard.unity
-    guid: 4c87f445819343b4ba89b26fd8661dc4
-  - enabled: 0
     path: Assets/Scenes/ToggleCollectionExample.unity
     guid: 0acf7ee4108a007468a1a56ddb6a3630
   - enabled: 0
@@ -126,7 +126,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Experimental/ScrollingExample.unity
     guid: 77e21ebc978cbc84f9ebe061742ae42d
   - enabled: 1
-    path: Assets/MyScenes/MyKeyboadExperimental.unity
+    path: Assets/MyKeyboad_HandRay.unity
+    guid: 75a9f674a1db32e43aa5f38cfac092a5
+  - enabled: 1
+    path: Assets/MyScenes/MyKeyboad_Gaze.unity
     guid: ab8b185dffdf9284c851f48e53b67522
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 87467803e919cef4394e7f39c6521b51, type: 2}

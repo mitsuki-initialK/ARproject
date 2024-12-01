@@ -4,6 +4,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using MixedReality.Toolkit.UX.Experimental;
 
 namespace MixedReality.Toolkit.UX
 {
@@ -16,34 +17,60 @@ namespace MixedReality.Toolkit.UX
         [SerializeField]
         private GameObject button;
         [SerializeField]
-        private GameObject InputField;
-        [SerializeField]
         private GameObject UI;
+        [SerializeField]
+        private GameObject ThemeArea;
+        [SerializeField]
+        public bool isFlickKeyboard;  //このキーボードがフリックキーボードかどうか
 
         private Stopwatch stopwatch;
 
         private GameObject resultUI;
         private GameObject countDownUI;
 
-        public bool counting = false;
+        private bool counting = false;  //計測しているかどうか
         private int missCount = 0; //何回ミスしたか
-        private int sentNum = 0;  //何番目の文章を計測するか
+        private int sentNum = 0;  //何番目の単語
         private int charNum = 0;  //何番目の文字を判定するか
 
-        private string[] sentences =
+        private string[] sentences = null;
+
+        private string[] sentences_kana =
         {
-            "いろはにほへとちりぬるを",
-            "わたるせけんにおにはない",
-            "はやおきはさんもんのとく",
-            "ぼくのぱぱはまんがかです",
-            "いっきょしゅいっとうそく",
+            "たんさん",
+            "すぺしゃる",
+            "えいかいわ",
+            "おりょうり",
+            "でんき",
+            "ろうどう",
+            "こたつ",
+            "だっしゅつ",
         };
+
+        private string[] sentences_alpha =
+        {
+            "tansan",
+            "supesharu",
+            "eikaiwa",
+            "oryouri",
+            "denki",
+            "roudou",
+            "kotatu",
+            "dasshutu",
+        };
+
 
 
         void Start()
         {
-
-            InputField.GetComponent<TextMeshProUGUI>().text = sentences[sentNum];
+            if (isFlickKeyboard)
+            {
+                sentences = sentences_kana;
+            }
+            else
+            {
+                sentences = sentences_alpha;
+            }
 
             stopwatch = new Stopwatch();
 
@@ -77,16 +104,6 @@ namespace MixedReality.Toolkit.UX
         }
 
 
-        public void SelectSentence()
-        {
-            resultUI.SetActive(false);
-
-            sentNum++;
-            if(sentNum >= sentences.Length) sentNum = 0;
-
-            InputField.GetComponent<TextMeshProUGUI>().text = sentences[sentNum];
-        }
-
         public void CountbuttonClick()
         {
             if (!counting)
@@ -99,38 +116,22 @@ namespace MixedReality.Toolkit.UX
             }
         }
 
-
-        public bool Check(string input)
+        public void CloseResultUI()
         {
-            bool isCurrect = false;
-
-            if (sentences[sentNum][charNum] == input[0])
-            {
-                isCurrect = true;
-                charNum++;
-
-                if (charNum == sentences[sentNum].Length)
-                {
-                    CountStop();
-                    ShowResultUI();
-                }
-            }
-            else
-            {
-                missCount++;
-            }
-
-            return isCurrect;
+            resultUI.SetActive(false);
+            ThemeArea.SetActive(false);
         }
 
 
         IEnumerator ShowUIRoutine()
         {
-            countDownUI.transform.Find("Panel/Text").GetComponent<TextMeshProUGUI>().text = "「" + sentences[sentNum] + "」";
+            ThemeArea.SetActive(true);
+            ThemeArea.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "ここにお題が表示されます";
 
             countDownUI.SetActive(true);
-
-            yield return new WaitForSeconds(3f);
+            countDownUI.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "すぐに計測が始まります";
+            
+            yield return new WaitForSeconds(1.5f);
 
             countDownUI.SetActive(false);
 
@@ -141,13 +142,27 @@ namespace MixedReality.Toolkit.UX
         private void CountStart()
         {
             charNum = 0;
+            sentNum = 0;
             missCount = 0;
+
+            for (int i = sentences.Length - 1; i > 0; i--)
+            {
+                int j = Random.Range(0, i + 1); 
+                string temp = sentences[i];
+                sentences[i] = sentences[j];
+                sentences[j] = temp;
+            }
+
             stopwatch.Reset();
             stopwatch.Start();
+
             button.GetComponent<Image>().color = new Color(1f, 0.50f, 0f);  //usui red
             startIcon.SetActive(false);
             stopIcon.SetActive(true);
+
             counting = true;
+
+            ThemeArea.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = sentences[sentNum];
         }
 
         private void CountStop()
@@ -157,15 +172,60 @@ namespace MixedReality.Toolkit.UX
             startIcon.SetActive(true);
             stopIcon.SetActive(false);
             counting = false;
+
+            ThemeArea.SetActive(false);
         }
 
         private void ShowResultUI()
         {
+            ThemeArea.SetActive(true);
+            ThemeArea.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "閉じる";
 
-            resultUI.transform.Find("Panel/Text").GetComponent<TextMeshProUGUI>().text
+            resultUI.transform.Find("Text").GetComponent<TextMeshProUGUI>().text
                 = "秒数：" + stopwatch.Elapsed.TotalSeconds.ToString("0.00") + "　　ミス数：" + missCount;
 
             resultUI.SetActive(true);
+        }
+
+
+        public (bool IsCurrect, bool IsComplete) Check(string input)
+        {
+            bool isCurrect = false;
+            bool isComplete = false;
+
+            if (sentences[sentNum][charNum] == input[0])
+            {
+                isCurrect = true;
+                charNum++;
+
+                if (charNum == sentences[sentNum].Length)
+                {
+                    charNum = 0;
+                    sentNum++;
+                    isComplete = true;
+
+                    if (sentNum >= sentences.Length)
+                    {
+                        CountStop();
+                        ShowResultUI();
+                    }
+                    else
+                    {
+                        ThemeArea.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = sentences[sentNum];
+                    }
+                }
+            }
+            else
+            {
+                missCount++;
+            }
+
+            return (isCurrect, isComplete);
+        }
+
+        public bool GetCounting()
+        {
+            return counting;
         }
 
     }

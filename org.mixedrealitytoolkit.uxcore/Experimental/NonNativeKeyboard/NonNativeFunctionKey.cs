@@ -124,5 +124,10 @@ namespace MixedReality.Toolkit.UX.Experimental
                 NonNativeKeyboard.Instance.ProcessFunctionKeyPress(this);
             }
         }
+
+        public void ExtraFireKey()
+        {
+            FireKey();
+        }
     }
 }

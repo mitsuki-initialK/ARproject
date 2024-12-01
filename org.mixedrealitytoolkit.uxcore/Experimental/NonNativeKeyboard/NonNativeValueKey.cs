@@ -24,6 +24,8 @@ namespace MixedReality.Toolkit.UX.Experimental
 
         private AudioManager audioManager;
 
+        private GameObject DeleteAll;
+
         private KeyInputCountSystem keyInputCountSystem;
 
 
@@ -99,6 +101,7 @@ namespace MixedReality.Toolkit.UX.Experimental
 
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
             keyInputCountSystem = GameObject.Find("KeyInputCountSystem").GetComponent<KeyInputCountSystem>();
+            DeleteAll = GameObject.Find("DeleteAll");
 
             CurrentValue = defaultValue;
 
@@ -132,15 +135,24 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// <inheritdoc/>
         protected override void FireKey()
         {
-            //NonNativeKeyboard.Instance.ProcessValueKeyPress(this);
+            FlickInput();
         }
 
 
         public void FlickInput()
         {
-            if (keyInputCountSystem.counting)
+            if (keyInputCountSystem.GetCounting())
             {
-                if (keyInputCountSystem.Check(this.currentValue) == false)
+                var result = keyInputCountSystem.Check(this.currentValue);
+                if (result.IsCurrect)
+                {
+                    if (result.IsComplete)
+                    {
+                        DeleteAll.GetComponent<NonNativeFunctionKey>().ExtraFireKey();
+                        return;
+                    }
+                }
+                else 
                 {
                     audioManager.PlayIncorrectSound();
                     return;
@@ -149,6 +161,7 @@ namespace MixedReality.Toolkit.UX.Experimental
 
             audioManager.PlayClickSound();
             NonNativeKeyboard.Instance.ProcessValueKeyPress(this);
+
         }
 
 
