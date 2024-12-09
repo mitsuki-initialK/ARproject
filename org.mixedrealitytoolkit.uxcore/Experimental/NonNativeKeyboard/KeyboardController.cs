@@ -135,38 +135,32 @@ namespace MixedReality.Toolkit.Input
                 }
 
 
-                if (selectingKey == keys[2])
+                if (posZ == 0)
                 {
-                    if (flickDistance.z < -0.125f)
+                    if (selectingKey == keys[2] && selectingKey == keys[3]) //左or上キーにフリックしている場合
                     {
-                        if (posZ != 1) Shifted(1);       //手前に引っ張る
-                    }
-                    else if (flickDistance.z < 0.025f)
-                    {
-                        if (posZ != 0) Shifted(0);
+                        if (flickDistance.z < -0.125f)
+                        {
+                            if (posZ != 1) Shifted(1);       //手前に引っ張る
+                        }
+                        else if (flickDistance.z > 0.025f)
+                        {
+                            if (posZ != -1) Shifted(-1);    //奥に押す
+                        }
                     }
                     else
                     {
-                        if (posZ != -1) Shifted(-1);    //奥に押す
+                        if (flickDistance.z < -0.075f)
+                        {
+                            if (posZ != 1) Shifted(1);       //手前に引っ張る
+                        }
+                        else if (flickDistance.z > 0.050f)
+                        {
+                            if (posZ != -1) Shifted(-1);    //奥に押す
+                        }
                     }
                 }
-                else
-                {
-                    if (flickDistance.z < -0.100f)
-                    {
-                        if (posZ != 1) Shifted(1);       //手前に引っ張る
-                    }
-                    else if (flickDistance.z < 0.050f)
-                    {
-                        if (posZ != 0) Shifted(0);
-                    }
-                    else
-                    {
-                        if (posZ != -1) Shifted(-1);    //奥に押す
-                    }
-                }
-
-
+                
                 yield return new WaitForSeconds(0.5f);
             }
         }
