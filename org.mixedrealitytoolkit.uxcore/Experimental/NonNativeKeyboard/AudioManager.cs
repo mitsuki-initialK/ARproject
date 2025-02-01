@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MixedReality.Toolkit.Input
+namespace MixedReality.Toolkit.UX
 {
     public class AudioManager : MonoBehaviour
     {
@@ -13,7 +13,22 @@ namespace MixedReality.Toolkit.Input
         [SerializeField]
         private AudioClip IncorrectSound;
 
-        // Start is called before the first frame update
+        //ƒVƒ“ƒOƒ‹ƒgƒ“‰»
+        public static AudioManager Instance;
+
+        void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
+
         void Start()
         {
             audioSource = GetComponent<AudioSource>();

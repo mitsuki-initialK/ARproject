@@ -4,12 +4,12 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using MixedReality.Toolkit.UX.Experimental;
 
-namespace MixedReality.Toolkit.UX
+namespace MixedReality.Toolkit.UX.Experimental
 {
     public class KeyInputCountSystem : MonoBehaviour
     {
+
         [SerializeField]
         private GameObject startIcon;
         [SerializeField]
@@ -28,7 +28,7 @@ namespace MixedReality.Toolkit.UX
         private GameObject resultUI;
         private GameObject countDownUI;
 
-        private bool counting = false;  //計測しているかどうか
+        private bool isCounting = false;  //計測しているかどうか
         private int missCount = 0; //何回ミスしたか
         private int sentNum = 0;  //何番目の単語
         private int charNum = 0;  //何番目の文字を判定するか
@@ -60,6 +60,21 @@ namespace MixedReality.Toolkit.UX
         };
 
 
+        //シングルトン化
+        public static KeyInputCountSystem Instance;
+
+        void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
         void Start()
         {
@@ -79,9 +94,10 @@ namespace MixedReality.Toolkit.UX
         }
 
 
+        //ボタンを見たとき
         public void GazeAt()
         {
-            if (counting)
+            if (isCounting)
             {
                 button.GetComponent<Image>().color = new Color(1f, 0.50f, 0f); //usui red
             }
@@ -91,9 +107,10 @@ namespace MixedReality.Toolkit.UX
             }            
         }
 
+        //ボタンから目を外したとき
         public void GazeAway()
         {
-            if (counting)
+            if (isCounting)
             {
                 button.GetComponent<Image>().color = new Color(1f, 0.15f, 0f); //koi red
             }
@@ -104,9 +121,10 @@ namespace MixedReality.Toolkit.UX
         }
 
 
+        //ボタンを押したとき
         public void CountbuttonClick()
         {
-            if (!counting)
+            if (!isCounting)
             {
                 StartCoroutine(ShowUIRoutine());
             }
@@ -116,6 +134,7 @@ namespace MixedReality.Toolkit.UX
             }
         }
 
+        //リザルト画面を閉じるボタンを押したとき
         public void CloseResultUI()
         {
             resultUI.SetActive(false);
@@ -160,7 +179,7 @@ namespace MixedReality.Toolkit.UX
             startIcon.SetActive(false);
             stopIcon.SetActive(true);
 
-            counting = true;
+            isCounting = true;
 
             ThemeArea.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = sentences[sentNum];
         }
@@ -171,7 +190,7 @@ namespace MixedReality.Toolkit.UX
             button.GetComponent<Image>().color = new Color(0f, 0.50f, 1f);  //usui blue
             startIcon.SetActive(true);
             stopIcon.SetActive(false);
-            counting = false;
+            isCounting = false;
 
             ThemeArea.SetActive(false);
         }
@@ -223,9 +242,9 @@ namespace MixedReality.Toolkit.UX
             return (isCurrect, isComplete);
         }
 
-        public bool GetCounting()
+        public bool GetIsCounting()
         {
-            return counting;
+            return isCounting;
         }
 
     }

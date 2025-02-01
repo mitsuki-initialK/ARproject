@@ -521,15 +521,15 @@ namespace MixedReality.Toolkit.UX.Experimental
                     break;
 
                 case Function.KanaConvert:
-                    KanaConvert();
+                    KanaConvert();　　　　//自作
                     break;
 
                 case Function.Change:
-                    ChangeKeyboard();
+                    ChangeKeyboard();　　//自作
                     break;
 
                 case Function.DeleteAll:
-                    DeleteAll();
+                    DeleteAll();　　　　　//自作
                     break;
 
                 case Function.Undefined:
@@ -553,6 +553,9 @@ namespace MixedReality.Toolkit.UX.Experimental
             }
         }
 
+        /// <summary>
+        /// Delete the all character
+        /// </summary>
         public void DeleteAll()
         {
             int caretPosition = 0;
@@ -561,6 +564,9 @@ namespace MixedReality.Toolkit.UX.Experimental
         }
 
 
+        /// <summary>
+        /// かな変換テーブル
+        /// </summary>
         private static readonly Dictionary<char, char> KanaMap = new Dictionary<char, char>
         {
             {'あ', 'ぁ'}, {'い', 'ぃ'}, {'う', 'ぅ'}, {'え', 'ぇ'}, {'お', 'ぉ'},
@@ -580,6 +586,9 @@ namespace MixedReality.Toolkit.UX.Experimental
             {'ほ', 'ぼ'}, {'ぼ', 'ぽ'}, {'ぽ', 'ほ'},
         };
 
+        /// <summary>
+        /// かな変換
+        /// </summary>
         public void KanaConvert()
         {
             int caretPosition = CaretIndex;

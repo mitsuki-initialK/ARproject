@@ -22,13 +22,6 @@ namespace MixedReality.Toolkit.UX.Experimental
     {   
         private string currentValue;
 
-        private AudioManager audioManager;
-
-        private GameObject DeleteAll;
-
-        private KeyInputCountSystem keyInputCountSystem;
-
-
         /// <summary>
         /// The current string value of this value key. Note the value may change based on the shift status of the keyboard.
         /// </summary>
@@ -99,10 +92,6 @@ namespace MixedReality.Toolkit.UX.Experimental
                 textMeshProText = GetComponentInChildren<TMP_Text>();
             }
 
-            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-            keyInputCountSystem = GameObject.Find("KeyInputCountSystem").GetComponent<KeyInputCountSystem>();
-            DeleteAll = GameObject.Find("DeleteAll");
-
             CurrentValue = defaultValue;
 
             if (string.IsNullOrEmpty(pulledValue))
@@ -141,25 +130,24 @@ namespace MixedReality.Toolkit.UX.Experimental
 
         public void FlickInput()
         {
-            if (keyInputCountSystem.GetCounting())
+            if (KeyInputCountSystem.Instance.GetIsCounting())
             {
-                var result = keyInputCountSystem.Check(this.currentValue);
-                if (result.IsCurrect)
+                var inputWord = KeyInputCountSystem.Instance.Check(this.currentValue);
+
+                if (inputWord.IsCurrect == false)
                 {
-                    if (result.IsComplete)
-                    {
-                        DeleteAll.GetComponent<NonNativeFunctionKey>().ExtraFireKey();
-                        return;
-                    }
+                    AudioManager.Instance.PlayIncorrectSound();
+                    return;
                 }
-                else 
+
+                if (inputWord.IsComplete)
                 {
-                    audioManager.PlayIncorrectSound();
+                    NonNativeKeyboard.Instance.DeleteAll();
                     return;
                 }
             }
 
-            audioManager.PlayClickSound();
+            AudioManager.Instance.PlayClickSound();
             NonNativeKeyboard.Instance.ProcessValueKeyPress(this);
 
         }
@@ -167,6 +155,8 @@ namespace MixedReality.Toolkit.UX.Experimental
 
         public void Shift(int posZ)
         {
+            //前後フリック（１：手前　０：中央　-１：奥）
+
             if (posZ == 1)
             {
                 CurrentValue = pulledValue;

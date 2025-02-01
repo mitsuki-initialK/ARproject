@@ -19,16 +19,6 @@ namespace MixedReality.Toolkit.UX.Experimental
     /// </remarks>
     public class NonNativeFunctionKey : NonNativeKey
     {
-        [SerializeField]
-        private GameObject[] keys;
-
-        private AudioManager audioManager;
-
-        void Start()
-        {
-            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
-        }
-
         /// <summary>
         /// Possible functionalities for a function key.
         /// </summary>
@@ -88,11 +78,12 @@ namespace MixedReality.Toolkit.UX.Experimental
             Dictate = 12,
 
 
+            /// <summary>
+            /// à»â∫é©çÏ
+            /// </summary>
             DeleteAll = 13,
 
-
             KanaConvert = 14,
-
 
             Change = 15,
         }
@@ -106,28 +97,9 @@ namespace MixedReality.Toolkit.UX.Experimental
         /// <inheritdoc/>
         protected override void FireKey()
         {
-
-            audioManager.PlayClickSound();
-
-
-            if (KeyFunction == Function.CapsLock)
-            {
-                foreach (GameObject key in keys) {
-                    for (int i = 0; i < key.transform.childCount; i++)
-                    {
-                        key.transform.GetChild(i).GetComponent<NonNativeValueKey>().CapsLock();
-                    }
-                }
-            }
-            else
-            {
-                NonNativeKeyboard.Instance.ProcessFunctionKeyPress(this);
-            }
+            AudioManager.Instance.PlayClickSound();
+            NonNativeKeyboard.Instance.ProcessFunctionKeyPress(this);
         }
 
-        public void ExtraFireKey()
-        {
-            FireKey();
-        }
     }
 }
